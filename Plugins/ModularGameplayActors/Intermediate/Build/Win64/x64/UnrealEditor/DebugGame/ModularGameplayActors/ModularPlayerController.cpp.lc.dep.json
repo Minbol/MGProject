@@ -1,0 +1,15 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\ue\\study\\mgp\\plugins\\modulargameplayactors\\source\\modulargameplayactors\\private\\modularplayercontroller.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\ue\\study\\mgp\\intermediate\\build\\win64\\x64\\mgpeditor\\debuggame\\unrealed\\sharedpch.unrealed.project.nonoptimized.valapi.valexpapi.cpp20.h.pch",
+        "Includes": [
+            "d:\\ue\\study\\mgp\\plugins\\modulargameplayactors\\intermediate\\build\\win64\\x64\\unrealeditor\\debuggame\\modulargameplayactors\\definitions.modulargameplayactors.h",
+            "d:\\ue\\study\\mgp\\plugins\\modulargameplayactors\\source\\modulargameplayactors\\public\\modularplayercontroller.h",
+            "d:\\ue\\study\\mgp\\plugins\\modulargameplayactors\\intermediate\\build\\win64\\unrealeditor\\inc\\modulargameplayactors\\uht\\modularplayercontroller.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

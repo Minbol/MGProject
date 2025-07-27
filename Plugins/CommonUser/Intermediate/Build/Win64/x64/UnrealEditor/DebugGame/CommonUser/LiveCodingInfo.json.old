@@ -1,0 +1,9 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.CommonUser.cpp.obj": [
+			"PerModuleInline.gen.cpp.obj",
+			"CommonUser.cpp.obj"
+		]
+	}
+}

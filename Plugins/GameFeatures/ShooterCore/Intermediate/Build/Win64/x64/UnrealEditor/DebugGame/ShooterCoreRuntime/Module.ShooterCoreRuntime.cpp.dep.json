@@ -1,0 +1,15 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\ue\\study\\mgp\\plugins\\gamefeatures\\shootercore\\intermediate\\build\\win64\\x64\\unrealeditor\\debuggame\\shootercoreruntime\\module.shootercoreruntime.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\ue\\study\\mgp\\intermediate\\build\\win64\\x64\\mgpeditor\\debuggame\\unrealed\\sharedpch.unrealed.project.nonoptimized.valapi.valexpapi.cpp20.h.pch",
+        "Includes": [
+            "d:\\ue\\study\\mgp\\plugins\\gamefeatures\\shootercore\\intermediate\\build\\win64\\x64\\unrealeditor\\debuggame\\shootercoreruntime\\definitions.shootercoreruntime.h",
+            "d:\\ue\\study\\mgp\\plugins\\gamefeatures\\shootercore\\intermediate\\build\\win64\\x64\\unrealeditor\\debuggame\\shootercoreruntime\\permoduleinline.gen.cpp",
+            "d:\\epic\\ue_5.6\\engine\\source\\runtime\\core\\public\\hal\\permoduleinline.inl"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

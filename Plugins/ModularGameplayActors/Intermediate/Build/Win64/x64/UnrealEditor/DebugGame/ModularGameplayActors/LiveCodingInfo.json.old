@@ -1,0 +1,12 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.ModularGameplayActors.cpp.obj": [
+			"ModularCharacter.gen.cpp.obj",
+			"ModularGameplayActors.init.gen.cpp.obj",
+			"PerModuleInline.gen.cpp.obj",
+			"ModularCharacter.cpp.obj",
+			"ModularGameplayActors.cpp.obj"
+		]
+	}
+}
