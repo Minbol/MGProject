@@ -3,6 +3,19 @@
 
 #include "MGPCosmeticAnimationTypes.h"
 
+TSubclassOf<UAnimInstance> FMGPAnimLayerSelectionSet::SelectBestLayer(const FGameplayTagContainer& InCosmeticTags) const
+{
+	for ( const auto& Rule : LayerRules )
+	{
+		if ( ( Rule.Layer != nullptr ) && InCosmeticTags.HasAll( Rule.RequireTags ) )
+		{
+			return Rule.Layer;
+		}
+	}
+
+	return DefaultLayer;
+}
+
 USkeletalMesh* FMGPAnimBodyStyleSelectionSet::SelectBestBodyStyle(const FGameplayTagContainer& InCosmeticTags) const
 {
 	for ( const auto& Rule : MeshRules )

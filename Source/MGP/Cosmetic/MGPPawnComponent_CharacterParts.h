@@ -78,9 +78,11 @@ public:
 	USceneComponent* GetSceneComponentToAttachTo() const;
 	void BroadcastChanged();
 
+	UFUNCTION(BlueprintCallable, BlueprintPure = false, Category = Cosmetics)
+	FGameplayTagContainer GetCombinedTags(FGameplayTag InGameplayTag);
+
 private:
 	USkeletalMeshComponent* GetParentMeshComponent() const;
-	FGameplayTagContainer GetCombinedTags(FGameplayTag InGameplayTag);
 
 public:
 	UPROPERTY()

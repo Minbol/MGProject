@@ -11,13 +11,42 @@
  */
 
 USTRUCT(BlueprintType)
+struct FMGPAnimLayerSelectionEntry
+{
+	GENERATED_BODY()
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<UAnimInstance> Layer;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (Categories = "Cosmetic"))
+	FGameplayTagContainer RequireTags;
+};
+
+
+USTRUCT(BlueprintType)
+struct FMGPAnimLayerSelectionSet
+{
+	GENERATED_BODY()
+
+public:
+	TSubclassOf<UAnimInstance> SelectBestLayer(const FGameplayTagContainer& InCosmeticTags) const;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<FMGPAnimLayerSelectionEntry> LayerRules;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<UAnimInstance> DefaultLayer;
+};
+
+USTRUCT(BlueprintType)
 struct FMGPAnimBodyStyleSelectionEntry
 {
 	GENERATED_BODY()
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TObjectPtr<USkeletalMesh> Mesh = nullptr;
+	TObjectPtr<USkeletalMesh> Mesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (Categories = "Cosmetic"))
 	FGameplayTagContainer RequireTags;

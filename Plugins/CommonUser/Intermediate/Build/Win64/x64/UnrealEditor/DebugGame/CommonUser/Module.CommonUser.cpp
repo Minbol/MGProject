@@ -2,3 +2,5 @@
 #include "D:/UE/Study/MGP/Plugins/CommonUser/Intermediate/Build/Win64/UnrealEditor/Inc/CommonUser/UHT/CommonSessionSubsystem.gen.cpp"
 #include "D:/UE/Study/MGP/Plugins/CommonUser/Intermediate/Build/Win64/UnrealEditor/Inc/CommonUser/UHT/CommonUser.init.gen.cpp"
 #include "D:/UE/Study/MGP/Plugins/CommonUser/Intermediate/Build/Win64/x64/UnrealEditor/DebugGame/CommonUser/PerModuleInline.gen.cpp"
+#include "D:/UE/Study/MGP/Plugins/CommonUser/Source/CommonUser/Private/CommonSessionSubsystem.cpp"
+#include "D:/UE/Study/MGP/Plugins/CommonUser/Source/CommonUser/Private/CommonUser.cpp"

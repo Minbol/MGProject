@@ -3,3 +3,6 @@
 #include "D:/UE/Study/MGP/Plugins/ModularGameplayActors/Intermediate/Build/Win64/UnrealEditor/Inc/ModularGameplayActors/UHT/ModularGameplayActors.init.gen.cpp"
 #include "D:/UE/Study/MGP/Plugins/ModularGameplayActors/Intermediate/Build/Win64/UnrealEditor/Inc/ModularGameplayActors/UHT/ModularPlayerController.gen.cpp"
 #include "D:/UE/Study/MGP/Plugins/ModularGameplayActors/Intermediate/Build/Win64/x64/UnrealEditor/DebugGame/ModularGameplayActors/PerModuleInline.gen.cpp"
+#include "D:/UE/Study/MGP/Plugins/ModularGameplayActors/Source/ModularGameplayActors/Private/ModularCharacter.cpp"
+#include "D:/UE/Study/MGP/Plugins/ModularGameplayActors/Source/ModularGameplayActors/Private/ModularGameplayActors.cpp"
+#include "D:/UE/Study/MGP/Plugins/ModularGameplayActors/Source/ModularGameplayActors/Private/ModularPlayerController.cpp"

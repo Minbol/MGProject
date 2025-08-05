@@ -7,7 +7,9 @@
         "Includes": [
             "d:\\ue\\study\\mgp\\plugins\\gamefeatures\\shootercore\\intermediate\\build\\win64\\x64\\unrealeditor\\debuggame\\shootercoreruntime\\definitions.shootercoreruntime.h",
             "d:\\ue\\study\\mgp\\plugins\\gamefeatures\\shootercore\\intermediate\\build\\win64\\x64\\unrealeditor\\debuggame\\shootercoreruntime\\permoduleinline.gen.cpp",
-            "d:\\epic\\ue_5.6\\engine\\source\\runtime\\core\\public\\hal\\permoduleinline.inl"
+            "d:\\epic\\ue_5.6\\engine\\source\\runtime\\core\\public\\hal\\permoduleinline.inl",
+            "d:\\ue\\study\\mgp\\plugins\\gamefeatures\\shootercore\\source\\shootercoreruntime\\private\\shootercoreruntimemodule.cpp",
+            "d:\\ue\\study\\mgp\\plugins\\gamefeatures\\shootercore\\source\\shootercoreruntime\\public\\shootercoreruntimemodule.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []
