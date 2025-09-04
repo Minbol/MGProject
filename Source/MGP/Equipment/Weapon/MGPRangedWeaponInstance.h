@@ -13,5 +13,11 @@ UCLASS()
 class MGP_API UMGPRangedWeaponInstance : public UMGPWeaponInstance
 {
 	GENERATED_BODY()
-	
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "WeaponConfig", meta = (ForceUnits = cm))
+	float MaxDamageRange = 25000.f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "WeaponConfig", meta = (ForceUnits = cm))
+	float BulletTraceWeaponRadius = 0.f;
 };

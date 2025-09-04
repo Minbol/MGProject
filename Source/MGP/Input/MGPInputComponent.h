@@ -42,12 +42,12 @@ public:
 			{
 				if ( InPressedFunc )
 				{
-					InBindHandles.Emplace( BindAction( Action.InputAction, ETriggerEvent::Triggered, InObject, InPressedFunc, Action.InputTag ).Gethandle() );
+					InBindHandles.Add( BindAction( Action.InputAction, ETriggerEvent::Triggered, InObject, InPressedFunc, Action.InputTag ).GetHandle() );
 				}
 
 				if ( InReleasedFunc )
 				{
-					InBindHandles.Emplace( BindAction( Action.InputAction, ETriggerEvent::Completed, InObject, InReleasedFunc, Action.InputTag ).Gethandle() );
+					InBindHandles.Add( BindAction( Action.InputAction, ETriggerEvent::Completed, InObject, InReleasedFunc, Action.InputTag ).GetHandle() );
 				}
 			}
 		}

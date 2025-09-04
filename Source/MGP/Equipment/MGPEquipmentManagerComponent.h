@@ -4,10 +4,12 @@
 
 #include "CoreMinimal.h"
 #include "Components/PawnComponent.h"
+#include "MGP/AbilitySystem/MGPAbilitySet.h"
 #include "MGPEquipmentManagerComponent.generated.h"
 
 class UMGPEquipmentInstance;
 class UMGPEquipmentDefinition;
+class UMGPAbilitySystemComponent;
 
 USTRUCT(BlueprintType)
 struct FMGPAppliedEquipmentEntry
@@ -20,6 +22,9 @@ public:
 
 	UPROPERTY()
 	TObjectPtr<UMGPEquipmentInstance> Instance;
+
+	UPROPERTY()
+	FMGPAbilitySet_GrantedHandles GrantedHandles;
 };
 
 USTRUCT(BlueprintType)
@@ -34,6 +39,8 @@ public:
 
 	UMGPEquipmentInstance* AddEntry(TSubclassOf<UMGPEquipmentDefinition> InEquipmentDefinition);
 	void RemoveEntry(UMGPEquipmentInstance* InInstance);
+
+	UMGPAbilitySystemComponent* GetAbilitySystemComponent() const;
 
 public:
 	UPROPERTY()

@@ -5,6 +5,8 @@
 
 #include "MGPEquipmentDefinition.h"
 #include "MGPEquipmentInstance.h"
+#include "MGP/AbilitySystem/MGPAbilitySystemComponent.h"
+#include "AbilitySystemGlobals.h"
 
 UMGPEquipmentInstance* FMGPEquipmentList::AddEntry(TSubclassOf<UMGPEquipmentDefinition> InEquipmentDefinition)
 {
@@ -25,6 +27,14 @@ UMGPEquipmentInstance* FMGPEquipmentList::AddEntry(TSubclassOf<UMGPEquipmentDefi
 	NewEntry.Instance = NewObject<UMGPEquipmentInstance>( OwnerComponent->GetOwner(), InstanceType );
 	Result = NewEntry.Instance;
 
+	if ( UMGPAbilitySystemComponent* ASC = GetAbilitySystemComponent() )
+	{
+		for ( auto AbilitySet : EquipmentCDO->AbilitySetsToGrant )
+		{
+			AbilitySet->GiveToAbilitySystem( ASC, &NewEntry.GrantedHandles, Result );
+		}
+	}
+
 	Result->SpawnEquipmentActors( EquipmentCDO->ActorsToSpawn );
 
 	return Result;
@@ -37,10 +47,26 @@ void FMGPEquipmentList::RemoveEntry(UMGPEquipmentInstance* InInstance)
 		FMGPAppliedEquipmentEntry& Entry = *EntryIt;
 		if ( Entry.Instance == InInstance )
 		{
+			if ( UMGPAbilitySystemComponent* ASC = GetAbilitySystemComponent() )
+			{
+				Entry.GrantedHandles.TakeFromAbilitySystem( ASC );
+			}
+			
 			InInstance->DestroyEquipmentActors();
 			EntryIt.RemoveCurrent();
 		}
 	}
+}
+
+UMGPAbilitySystemComponent* FMGPEquipmentList::GetAbilitySystemComponent() const
+{
+	if ( !IsValid( OwnerComponent ) )
+	{
+		return nullptr;
+	}
+
+	const AActor* OwningActor = OwnerComponent->GetOwner();
+	return Cast<UMGPAbilitySystemComponent>( UAbilitySystemGlobals::GetAbilitySystemComponentFromActor( OwningActor ) );
 }
 
 UMGPEquipmentManagerComponent::UMGPEquipmentManagerComponent(const FObjectInitializer& ObjectInitializer)

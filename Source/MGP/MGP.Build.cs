@@ -16,6 +16,8 @@ public class MGP : ModuleRules
 			"InputCore", 
 			"EnhancedInput",
 			"GameplayTags",
+			"GameplayTasks",
+			"GameplayAbilities",
 			"ModularGameplay",
 			"GameFeatures",
 			"CommonUser",

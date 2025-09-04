@@ -9,6 +9,7 @@
 #include "UserSettings/EnhancedInputUserSettings.h"
 #include "MGPPawnExtensionComponent.h"
 #include "MGP/MGPGameplayTags.h"
+#include "MGP/AbilitySystem/MGPAbilitySystemComponent.h"
 #include "MGP/Camera/MGPCameraComponent.h"
 #include "MGP/Player/MGPPlayerController.h"
 #include "MGP/Player/MGPPlayerState.h"
@@ -116,7 +117,7 @@ void UMGPHeroComponent::HandleChangeInitState(UGameFrameworkComponentManager* Ma
 	if ( CurrentState == InitTags.InitState_DataAvailable && DesiredState == InitTags.InitState_DataInitialized )
 	{
 		const APawn* Pawn = GetPawn<APawn>();
-		const AMGPPlayerState* MGPPS = GetPlayerState<AMGPPlayerState>();
+		AMGPPlayerState* MGPPS = GetPlayerState<AMGPPlayerState>();
 		if ( !IsValid( Pawn ) || !IsValid( MGPPS ) )
 		{
 			return;
@@ -127,6 +128,7 @@ void UMGPHeroComponent::HandleChangeInitState(UGameFrameworkComponentManager* Ma
 		if ( UMGPPawnExtensionComponent* PawnExtensionComponent = UMGPPawnExtensionComponent::FindPawnExtensionComponent( Pawn ) )
 		{
 			PawnData = PawnExtensionComponent->GetPawnData<UMGPPawnData>();
+			PawnExtensionComponent->InitializeAbilitySystem( MGPPS->GetAbilitySystemComponent(), MGPPS );
 		}
 
 		if ( bIsLocallyControlled && IsValid( PawnData ) )
@@ -210,6 +212,9 @@ void UMGPHeroComponent::InitializePlayerInput(UInputComponent* InPlayerInputComp
 				if ( UMGPInputComponent* MGPIC = Cast<UMGPInputComponent>( InPlayerInputComponent ) )
 				{
 					const FMGPGameplayTags& GameplayTags = FMGPGameplayTags::Get();
+
+					TArray<uint32> BindHandles;
+					MGPIC->BindAbilityActions( InputConfig, this, &ThisClass::Input_AbilityInputTagPressed, &ThisClass::Input_AbilityInputTagReleased, BindHandles );
 					
 					MGPIC->BindNativeAction( InputConfig, GameplayTags.InputTag_Move, ETriggerEvent::Triggered, this, &ThisClass::Input_Move, false );
 					MGPIC->BindNativeAction( InputConfig, GameplayTags.InputTag_Look_Mouse, ETriggerEvent::Triggered, this, &ThisClass::Input_LookMouse, false );
@@ -264,5 +269,33 @@ void UMGPHeroComponent::Input_LookMouse(const FInputActionValue& InputActionValu
 	{
 		double AimInversionValue = -Value.Y;
 		Pawn->AddControllerPitchInput(AimInversionValue);
+	}
+}
+
+void UMGPHeroComponent::Input_AbilityInputTagPressed(FGameplayTag InputTag)
+{
+	if ( const APawn* Pawn = GetPawn<APawn>() )
+	{
+		if ( const UMGPPawnExtensionComponent* PawnExtensionComponent = UMGPPawnExtensionComponent::FindPawnExtensionComponent( Pawn ) )
+		{
+			if ( UMGPAbilitySystemComponent* ASC = PawnExtensionComponent->GetAbilitySystemComponent() )
+			{
+				ASC->AbilityInputTagPressed( InputTag );
+			}
+		}
+	}
+}
+
+void UMGPHeroComponent::Input_AbilityInputTagReleased(FGameplayTag InputTag)
+{
+	if ( const APawn* Pawn = GetPawn<APawn>() )
+	{
+		if ( const UMGPPawnExtensionComponent* PawnExtensionComponent = UMGPPawnExtensionComponent::FindPawnExtensionComponent( Pawn ) )
+		{
+			if ( UMGPAbilitySystemComponent* ASC = PawnExtensionComponent->GetAbilitySystemComponent() )
+			{
+				ASC->AbilityInputTagReleased( InputTag );
+			}
+		}
 	}
 }

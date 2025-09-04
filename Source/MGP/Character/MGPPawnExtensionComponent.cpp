@@ -5,6 +5,7 @@
 
 #include "Components/GameFrameworkComponentManager.h"
 #include "MGP/MGPGameplayTags.h"
+#include "MGP/AbilitySystem/MGPAbilitySystemComponent.h"
 
 const FName UMGPPawnExtensionComponent::NAME_ActorFeatureName( "PawnExtension" );
 
@@ -129,4 +130,42 @@ void UMGPPawnExtensionComponent::SetPawnData(const UMGPPawnData* InPawnData)
 void UMGPPawnExtensionComponent::SetupPlayerInputComponent()
 {
 	CheckDefaultInitialization();
+}
+
+void UMGPPawnExtensionComponent::InitializeAbilitySystem(UMGPAbilitySystemComponent* InASC, AActor* InOwnerActor)
+{
+	if ( !IsValid( InASC ) )
+	{
+		return;
+	}
+
+	if ( !IsValid( InOwnerActor ) )
+	{
+		return;
+	}
+
+	if ( IsValid( AbilitySystemComponent ) )
+	{
+		UninitializeComponent();
+	}
+
+	APawn* Pawn = GetPawnChecked<APawn>();
+	AActor* ExistingAvatar = InASC->GetAvatarActor();
+	if ( !IsValid( ExistingAvatar ) )
+	{
+		return;
+	}
+
+	AbilitySystemComponent = InASC;
+	AbilitySystemComponent->InitAbilityActorInfo( InOwnerActor, Pawn );
+}
+
+void UMGPPawnExtensionComponent::UnInitializeAbilitySystem()
+{
+	if ( AbilitySystemComponent == nullptr )
+	{
+		return;
+	}
+
+	AbilitySystemComponent = nullptr;
 }

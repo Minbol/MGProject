@@ -8,6 +8,7 @@
 #include "Components/GameFrameworkInitStateInterface.h"
 #include "MGPPawnExtensionComponent.generated.h"
 
+class UMGPAbilitySystemComponent;
 class UMGPPawnData;
 /**
  * 
@@ -34,10 +35,18 @@ public:
 	static UMGPPawnExtensionComponent* FindPawnExtensionComponent(const AActor* InActor) { return InActor != nullptr ? InActor->FindComponentByClass<UMGPPawnExtensionComponent>() : nullptr; }
 	void SetPawnData(const UMGPPawnData* InPawnData);
 	void SetupPlayerInputComponent();
+
+	void InitializeAbilitySystem(UMGPAbilitySystemComponent* InASC, AActor* InOwnerActor);
+	void UnInitializeAbilitySystem();
+
+	UMGPAbilitySystemComponent* GetAbilitySystemComponent() const { return AbilitySystemComponent; }
 	
 	template<typename T>
 	const T* GetPawnData() const { return Cast<T>( PawnData ); }
 
 	UPROPERTY(EditInstanceOnly, Category = "MGP|Pawn")
 	TObjectPtr<const UMGPPawnData> PawnData;
+
+	UPROPERTY()
+	TObjectPtr<UMGPAbilitySystemComponent> AbilitySystemComponent;
 };

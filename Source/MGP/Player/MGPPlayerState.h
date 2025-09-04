@@ -8,6 +8,7 @@
 #include "MGP/GameMode/MGPExperienceDef.h"
 #include "MGPPlayerState.generated.h"
 
+class UMGPAbilitySystemComponent;
 class UMGPExperienceDef;
 class UMGPPawnData;
 /**
@@ -19,10 +20,14 @@ class MGP_API AMGPPlayerState : public APlayerState
 	GENERATED_BODY()
 
 public:
+	AMGPPlayerState(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
+	
 	virtual void PostInitializeComponents() final;
 	
 	void OnExperienceLoaded(const UMGPExperienceDef* InCurrentExperience);
 	void SetPawnData(const UMGPPawnData* InPawnData);
+
+	UMGPAbilitySystemComponent* GetAbilitySystemComponent() const { return AbilitySystemComponent; }
 
 	template<typename T>
 	const T* GetPawnData() const { return Cast<T>( PawnData ); }
@@ -30,4 +35,7 @@ public:
 private:
 	UPROPERTY()
 	const UMGPPawnData* PawnData;
+
+	UPROPERTY(VisibleAnywhere, Category = "MGP|PlayerState")
+	TObjectPtr<UMGPAbilitySystemComponent> AbilitySystemComponent;
 };

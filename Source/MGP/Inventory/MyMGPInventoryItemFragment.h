@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Inventory/MGPInventoryItemDefinition.h"
+#include "MGPInventoryItemDefinition.h"
 #include "MyMGPInventoryItemFragment.generated.h"
 
 /**

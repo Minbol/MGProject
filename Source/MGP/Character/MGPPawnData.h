@@ -6,6 +6,7 @@
 #include "Engine/DataAsset.h"
 #include "MGPPawnData.generated.h"
 
+class UMGPAbilitySet;
 class UMGPInputConfig;
 class UMGPCameraMode;
 /**
@@ -27,4 +28,7 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="MGP|InputConfig")
 	TObjectPtr<UMGPInputConfig> InputConfig;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="MGP|Abilities")
+	TArray<TObjectPtr<UMGPAbilitySet>> AbilitySets;
 };

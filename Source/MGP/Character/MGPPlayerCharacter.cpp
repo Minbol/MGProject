@@ -4,6 +4,7 @@
 #include "MGPPlayerCharacter.h"
 
 #include "MGPPawnExtensionComponent.h"
+#include "MGP/AbilitySystem/MGPAbilitySystemComponent.h"
 #include "MGP/Camera/MGPCameraComponent.h"
 
 // Sets default values
@@ -40,5 +41,10 @@ void AMGPPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInput
 	{
 		PawnExtensionComponent->SetupPlayerInputComponent();
 	}
+}
+
+UAbilitySystemComponent* AMGPPlayerCharacter::GetAbilitySystemComponent() const
+{
+	return PawnExtensionComponent->GetAbilitySystemComponent();
 }
 

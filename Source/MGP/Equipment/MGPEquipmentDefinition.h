@@ -6,6 +6,7 @@
 #include "UObject/NoExportTypes.h"
 #include "MGPEquipmentDefinition.generated.h"
 
+class UMGPAbilitySet;
 class UMGPEquipmentInstance;
 
 USTRUCT()
@@ -41,4 +42,7 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, Category = Equipment)
 	TArray<FMGPEquipmentActorToSpawn> ActorsToSpawn;
+
+	UPROPERTY(EditDefaultsOnly, Category = Equipment)
+	TArray<TObjectPtr<UMGPAbilitySet>> AbilitySetsToGrant;
 };

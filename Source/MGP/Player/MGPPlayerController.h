@@ -6,6 +6,8 @@
 #include "ModularPlayerController.h"
 #include "MGPPlayerController.generated.h"
 
+class UMGPAbilitySystemComponent;
+class AMGPPlayerState;
 /**
  * 
  */
@@ -16,4 +18,10 @@ class MGP_API AMGPPlayerController : public AModularPlayerController
 
 public:
 	AMGPPlayerController(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
+
+	virtual void PostProcessInput(const float DeltaTime, const bool bGamePaused) override;
+
+protected:
+	AMGPPlayerState* GetPlayerState() const;
+	UMGPAbilitySystemComponent* GetAbilitySystemComponent() const;
 };

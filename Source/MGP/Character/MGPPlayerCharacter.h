@@ -4,13 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "ModularCharacter.h"
+#include "AbilitySystemInterface.h"
 #include "MGPPlayerCharacter.generated.h"
 
 class UMGPCameraComponent;
 class UMGPPawnExtensionComponent;
 
 UCLASS()
-class MGP_API AMGPPlayerCharacter : public AModularCharacter
+class MGP_API AMGPPlayerCharacter : public AModularCharacter, public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 
@@ -27,7 +28,8 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;\
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 
 
 public:
