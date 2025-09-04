@@ -6,6 +6,7 @@
 #include "AbilitySystemComponent.h"
 #include "MGP/AbilitySystem/MGPGameplayAbilityTargetData_SingleTargetHit.h"
 #include "MGP/Equipment/Weapon/MGPRangedWeaponInstance.h"
+#include "MGP/Physics/MGPCollisionChannels.h"
 
 UMGPGameplayAbility_RangeWeapon::UMGPGameplayAbility_RangeWeapon(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
@@ -309,5 +310,5 @@ FHitResult UMGPGameplayAbility_RangeWeapon::WeaponTrace(const FVector& InStartTr
 
 ECollisionChannel UMGPGameplayAbility_RangeWeapon::DetermineTraceChannel(FCollisionQueryParams& InParams, bool bInSimulated) const
 {
-	return ECC_GameTraceChannel2;
+	return MGP_TRACECHANNEL_WEAPON;
 }
