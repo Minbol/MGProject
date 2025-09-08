@@ -64,6 +64,8 @@ public:
 	UMGPEquipmentInstance* EquipItem(TSubclassOf<UMGPEquipmentDefinition> InEquipmentDefinition);
 	void UnEquipItem(UMGPEquipmentInstance* InItemInstance);
 
+	UFUNCTION(BlueprintCallable)
+	TArray<UMGPEquipmentInstance*> GetEquipmentInstancesOfType(TSubclassOf<UMGPEquipmentInstance> InstanceType) const;
 public:
 	UPROPERTY()
 	FMGPEquipmentList EquipmentList;

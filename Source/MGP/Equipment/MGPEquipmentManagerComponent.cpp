@@ -98,3 +98,17 @@ void UMGPEquipmentManagerComponent::UnEquipItem(UMGPEquipmentInstance* InItemIns
 		EquipmentList.RemoveEntry( InItemInstance );
 	}
 }
+
+TArray<UMGPEquipmentInstance*> UMGPEquipmentManagerComponent::GetEquipmentInstancesOfType(TSubclassOf<UMGPEquipmentInstance> InstanceType) const
+{
+	TArray<UMGPEquipmentInstance*> Result;
+	for ( auto Entry : EquipmentList.Entries )
+	{
+		if ( Entry.Instance->IsA( InstanceType ) )
+		{
+			Result.Add( Entry.Instance );
+		}
+	}
+
+	return Result;
+}

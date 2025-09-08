@@ -18,6 +18,8 @@ public:
 	UMGPAbilitySystemComponent(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
 
 public:
+	virtual void InitAbilityActorInfo(AActor* InOwnerActor, AActor* InAvatarActor) override;
+	
 	void AbilityInputTagPressed(const FGameplayTag& InInputTag);
 	void AbilityInputTagReleased(const FGameplayTag& InInputTag);
 	void ProcessAbilityInput(float DeltaTime, bool bGamePaused);

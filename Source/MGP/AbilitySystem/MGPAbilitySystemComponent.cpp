@@ -3,10 +3,37 @@
 #include "MGPAbilitySystemComponent.h"
 
 #include "Abilities/MGPGameplayAbility.h"
+#include "MGP/Animation/MGPAnimInstance.h"
 
 UMGPAbilitySystemComponent::UMGPAbilitySystemComponent(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {	
+}
+
+void UMGPAbilitySystemComponent::InitAbilityActorInfo(AActor* InOwnerActor, AActor* InAvatarActor)
+{
+	if ( !IsValid( InOwnerActor ) )
+	{
+		return;
+	}
+
+	if ( !IsValid( InAvatarActor ) )
+	{
+		return;
+	}
+
+	FGameplayAbilityActorInfo* ActorInfo = AbilityActorInfo.Get();
+	const bool HasNewPawnAvatar = Cast<APawn>( InAvatarActor ) && InAvatarActor != ActorInfo->AvatarActor.Get();
+	
+	Super::InitAbilityActorInfo(InOwnerActor, InAvatarActor);
+
+	if ( HasNewPawnAvatar )
+	{
+		if ( UMGPAnimInstance* AnimInstance = Cast<UMGPAnimInstance>( ActorInfo->GetAnimInstance() ) )
+		{
+			AnimInstance->InitializeWithAbilitySystem( this );
+		}
+	}
 }
 
 void UMGPAbilitySystemComponent::AbilityInputTagPressed(const FGameplayTag& InInputTag)
