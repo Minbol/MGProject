@@ -20,6 +20,10 @@ class MGP_API UMGPExperienceDef : public UPrimaryDataAsset
 public:
 	UMGPExperienceDef(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
 
+#if WITH_EDITORONLY_DATA
+	virtual void UpdateAssetBundleData() override;
+#endif
+
 	FORCEINLINE UMGPPawnData*   GetPawnData()             const { return DefaultPawnData; }
 	FORCEINLINE TArray<FString> GetGameFeaturesToEnable() const { return GameFeaturesToEnable; }
 

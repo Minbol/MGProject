@@ -11,7 +11,7 @@ class UMGPInventoryItemDefinition;
 /**
  * 
  */
-UCLASS()
+UCLASS(BlueprintType)
 class MGP_API UMGPInventoryItemInstance : public UObject
 {
 	GENERATED_BODY()
@@ -20,14 +20,14 @@ public:
 	UMGPInventoryItemInstance(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
 
 public:
+	UFUNCTION(BlueprintCallable, BlueprintPure = false, meta = (DeterminesOutputType = InFragmentClass))
+	const UMGPInventoryItemFragment* FindFragmentByClass(TSubclassOf<UMGPInventoryItemFragment> InFragmentClass) const;
+	
 	template<typename T>
 	T* FindFragmentByClass() const
 	{
 		return (T*)(FindFragmentByClass(T::StaticClass()));
 	}
-
-private:
-	const UMGPInventoryItemFragment* FindFragmentByClass(TSubclassOf<UMGPInventoryItemFragment> InFragmentClass) const;
 
 public:
 	UPROPERTY()

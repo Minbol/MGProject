@@ -52,6 +52,14 @@ void UMGPExperienceManagerComponent::StartExperienceLoad()
 	TSet<FPrimaryAssetId> BundleAssetList;
 	BundleAssetList.Emplace( CurrentExperience->GetPrimaryAssetId() );
 
+	for ( const auto& ActionSet : CurrentExperience->ActionsSets )
+	{
+		if ( ActionSet != nullptr )
+		{
+			BundleAssetList.Emplace( ActionSet->GetPrimaryAssetId() );
+		}
+	}
+
 	TArray<FName> BundleToLoad;
 	const ENetMode OwnerNetMode = GetOwner()->GetNetMode();
 	const bool bLoadClient = OwnerNetMode != NM_DedicatedServer;

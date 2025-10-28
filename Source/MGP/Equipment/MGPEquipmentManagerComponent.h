@@ -66,6 +66,15 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	TArray<UMGPEquipmentInstance*> GetEquipmentInstancesOfType(TSubclassOf<UMGPEquipmentInstance> InstanceType) const;
+
+	UMGPEquipmentInstance* GetFirstInstanceOfType(TSubclassOf<UMGPEquipmentInstance> InInstanceType);
+
+	template<typename T>
+	T* GetFirstInstanceOfType()
+	{
+		return (T*)GetFirstInstanceOfType( T::StaticClass() );
+	}
+	
 public:
 	UPROPERTY()
 	FMGPEquipmentList EquipmentList;

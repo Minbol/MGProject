@@ -112,3 +112,19 @@ TArray<UMGPEquipmentInstance*> UMGPEquipmentManagerComponent::GetEquipmentInstan
 
 	return Result;
 }
+
+UMGPEquipmentInstance* UMGPEquipmentManagerComponent::GetFirstInstanceOfType(TSubclassOf<UMGPEquipmentInstance> InInstanceType)
+{
+	for ( auto& Entry : EquipmentList.Entries )
+	{
+		if ( UMGPEquipmentInstance* Instance = Entry.Instance )
+		{
+			if ( Instance->IsA( InInstanceType ) )
+			{
+				return Instance;
+			}
+		}
+	}
+
+	return nullptr;
+}

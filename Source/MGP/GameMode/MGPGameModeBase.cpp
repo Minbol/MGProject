@@ -11,6 +11,7 @@
 #include "MGP/Player/MGPPlayerState.h"
 #include "MGP/Player/MGPPlayerController.h"
 #include "MGP/Player/MGPPlayerState.h"
+#include "MGP/UI/MGPHUD.h"
 
 AMGPGameModeBase::AMGPGameModeBase()
 {
@@ -18,6 +19,7 @@ AMGPGameModeBase::AMGPGameModeBase()
 	PlayerControllerClass = AMGPPlayerController::StaticClass();
 	PlayerStateClass      = AMGPPlayerState::StaticClass();
 	DefaultPawnClass	  = AMGPPlayerCharacter::StaticClass();
+	HUDClass			  = AMGPHUD::StaticClass();
 }
 
 void AMGPGameModeBase::InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage)

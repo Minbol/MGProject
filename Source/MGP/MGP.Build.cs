@@ -23,6 +23,10 @@ public class MGP : ModuleRules
 			"CommonUser",
 			"ShooterCoreRuntime",
 			"ModularGameplayActors",
+			"CommonUI",
+			"CommonGame",
+			"UMG",
+			"UIExtension",
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });

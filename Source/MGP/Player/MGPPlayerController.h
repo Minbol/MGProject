@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "ModularPlayerController.h"
+#include "CommonPlayerController.h"
 #include "MGPPlayerController.generated.h"
 
 class UMGPAbilitySystemComponent;
@@ -12,7 +12,7 @@ class AMGPPlayerState;
  * 
  */
 UCLASS()
-class MGP_API AMGPPlayerController : public AModularPlayerController
+class MGP_API AMGPPlayerController : public ACommonPlayerController
 {
 	GENERATED_BODY()
 
